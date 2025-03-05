@@ -1,1 +1,1 @@
-Projeto Prática Profissional e Análise
+Projeto Prática Profissional em Análise
