@@ -83,6 +83,73 @@ Se o projeto incluir documentação aberta, você pode verificá-la seguindo os 
 - Confirme se as versões do Ruby e Rails são compatíveis com o projeto.
 - Caso encontre problemas de permissão, tente executar os comandos com `sudo`.
 
+## Usando Docker e Docker Compose
+
+Se preferir, você pode usar o Docker para configurar e executar o projeto. Certifique-se de ter o [Docker](https://www.docker.com/) e o [Docker Compose](https://docs.docker.com/compose/) instalados.
+
+### Passos para Configuração com Docker
+
+1. **Construa os Contêineres**
+
+   No diretório raiz do projeto, execute:
+
+   ```bash
+   docker-compose build
+   ```
+
+2. **Inicie os Contêineres**
+
+   Suba os serviços definidos no `docker-compose.yml`:
+
+   ```bash
+   docker-compose up
+   ```
+
+3. **Acesse a Aplicação**
+
+   A aplicação estará disponível em `http://localhost:3000`.
+
+### Comandos Úteis
+
+- **Executar Migrações no Banco de Dados**
+
+  ```bash
+  docker-compose run web rails db:migrate
+  ```
+
+- **Popule o Banco de Dados**
+
+  ```bash
+  docker-compose run web rails db:seed
+  ```
+
+- **Executar Testes**
+
+  ```bash
+  docker-compose run web rails test
+  ```
+
+- **Parar os Contêineres**
+
+  ```bash
+  docker-compose down
+  ```
+
+### Solução de Problemas com Docker
+
+- Certifique-se de que as portas necessárias (como `3000` para o servidor e `5432` para o PostgreSQL) estão disponíveis.
+- Verifique os logs dos contêineres para identificar possíveis erros:
+
+  ```bash
+  docker-compose logs
+  ```
+
+- Caso precise reconstruir os contêineres, execute:
+
+  ```bash
+  docker-compose build --no-cache
+  ```
+
 ## Licença
 
 Este projeto está licenciado sob a [Licença MIT](LICENSE).
